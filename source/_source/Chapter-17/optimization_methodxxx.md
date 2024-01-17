@@ -22,8 +22,6 @@ quandy2020@126.com
 
 牛顿法主要应用在两个方面，1：求方程的根；2：最优化。
 
-
-
 ### 牛顿法基本过程
 
 牛顿法如下：
@@ -201,6 +199,48 @@ $$
 $$
 B^{k+1} = B^{k} +  \frac{y^k(y^k)^T}{(y^k)^Ts^k} - \frac{B^ks^k(s^k)^TB^k}{(s^k)^TB^ks^k}
 $$
+
+
+
+## 测试函数
+
+### Rosenbrock函数
+
+* Rosenbrock function
+
+$$
+f(x, y) = (a - x)^2 + b(y - x^2)^2
+$$
+
+​     其中全局最小值$(x, y) = (a, a^2)$, 当$a = 1, b = 100$
+$$
+f(x, y) = (1 - x)^2 + 100(y - x^2)^2
+$$
+​    优化问题：
+$$
+argmin f(x)
+$$
+
+* **Gradient**
+  $$
+  \nabla {f} = 
+      \begin{bmatrix}
+  		-400xy + 400x^3 + 2x -2 \\
+  		200y - 200x^2
+      \end{bmatrix}
+  $$
+
+* **Hessian** 
+
+$$
+H =
+	\begin{bmatrix}
+		-400y + 1200x^2 + 2 &  -400x \\
+		-400x &  200
+    \end{bmatrix}
+$$
+
+### Himmelblau's函数
 
 
 

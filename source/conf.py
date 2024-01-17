@@ -32,7 +32,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README.md', 'exercise']
 extensions = ['sphinx.ext.githubpages']
 
 if sphinx_version_info >= (1, 4):
-  extensions += ['recommonmark', 'sphinx.ext.mathjax', "sphinx.ext.autodoc", "sphinx.ext.extlinks"]
+  extensions += ['sphinx.ext.mathjax', "sphinx.ext.autodoc", "sphinx.ext.extlinks"]
 else:
   from recommonmark.parser import CommonMarkParser
 

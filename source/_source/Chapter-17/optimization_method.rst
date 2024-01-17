@@ -47,3 +47,199 @@
 * 计算 **搜索方向** :math:`d^k = -H^k \nabla f(x^k)` ， :math:`H^k` 为当前 :math:`x^k` 处的Hessian 矩阵的近似
 * 迭代更新 :math:`x: x^{k+1} = x^{k} + d^k`
 * 更新 :math:`H: H^{k+1} = g(H^k)` 根据 :math:`x^k` 点的信息进行简单修正
+
+
+拟牛顿法 :math:`H^k` 的确定
+--------------------
+
+设 :math:`f(x)` 是二阶连续可微函数，对 :math:`\nabla f(x)` 在点 :math:`x^{k+1}` 处进行一阶泰勒近似，得：
+
+    .. math::
+
+        \nabla f(x) = \nabla f(x^{k+1}) + \nabla ^2f(x^{k+1})(x - x^{k+1}) + O(|| x - x^{k+1}||^2)
+
+令 :math:`x = x^k` ，设 :math:`s^k = x^{k+1} - x^{k}` 为 **点差**， :math:`y^k = \nabla f(x^{k+1}) - \nabla f(x^{k})` 为 **梯度差**，得：
+
+    .. math::
+
+        \nabla ^2f(x^{k+1})s^k + O(|| s^k ||^2) = y^k
+
+忽略高阶项 :math:`O(|| s^k ||^2)` ，由此可以得到：
+
+    .. math::
+
+        \nabla ^2f(x^{k+1})s^k = y^k
+
+所以，我们希望 **近似** Hessian **矩阵** :math:`B^{k+1}` 满足方程：
+
+    .. math::
+
+        B^{k+1}s^k = y^k
+
+因此 **近似** Hessian **矩阵的逆** :math:`H^{k+1}` 满足：
+
+    .. math::
+
+        H^{k+1}y^k = s^k
+
+上述的两个方程被称为 **割线方程**。
+
+
+SR1方法
+=================
+
+SR1 定义
+-----------------
+
+SR1 方法 （秩一更新 Symmetric Rank-One）的核心思路很简单，即 根据 :math:`x^k` 处的信息得到修正量 :math:`\Delta{H}^k` 来更新 :math:`{H}^k` ，即：
+
+    .. math::
+
+        H^{k+1} = H^k + \Delta{H}^k
+
+我们希望 :math:`H^k \approx  \nabla^2f(x^k)^{-1}` ， :math:`H^{k+1} \approx  \nabla^2f(x^{k+1})^{-1}` 故有：
+
+    .. math::
+
+        \Delta {H}^k \approx \nabla^2f(x^{k+1})^{-1} - \nabla^2f(x^k)^{-1}
+
+需要保证 :math:`H^k` 和 :math:`H^{k+1}` 都是对称的，故显然 :math:`\Delta {H}^k` 也是对称的。所以令 :math:`\beta \in \mathbb{R^n}, \,u \in \mathbb{R^n}` ，
+使得 :math:`\Delta {H}^k = \beta \mu \mu^T` ，故 :math:`H` 的迭代更新表达式为：
+
+    .. math::
+
+        H^{k+1} = H^k + \beta \mu \mu^T
+
+显然 :math:`\beta \mu \mu^T` 是一个 :math:`n \times n` 的 **对称矩阵**。:math:`\beta` 是待定的标量，:math:`\mu` 是待定的向量。
+
+
+SR1 更新公式
+-----------------
+
+根据 **割线方程** :math:`H^{k+1}y^k = s^k` ，代入 SR1 更新的结果，得到：
+
+    .. math::
+
+        (H^k + \beta \mu \mu ^T)y^k = s^k
+
+整理可得：
+
+    .. math::
+
+        \beta \mu \mu^T y^k = (\beta\mu^T y^k)\mu = s^k - H^ky^k
+
+其中可以得出 :math:`\beta \mu^T y^k` 是一个 **标量** ，因此上式表明 **向量** :math:`\mu` 和 :math:`s^k - H^ky^k` **同向** 。故有：
+
+    .. math::
+
+        \mu = \frac{1}{\beta \mu^T y^k}(s^k - H^ky^k)
+
+记 :math:`\frac{1}{\beta \mu^T y^k} = \gamma` ，得：
+
+    .. math::
+
+        \mu = \gamma(s^k - H^ky^k)
+
+将 :math:`\mu` 回代到 :math:`\beta \mu \mu^T y^k = s^k - H^ky^k` ，得：
+
+    .. math::
+
+        s^k -  H^ky^k= \beta \gamma^2(s^k - H^ky^k)(s^k - H^ky^k)^Ty^k
+
+由于 :math:`\beta \gamma^2` 和 :math:`(s^k - H^ky^k)^Ty^k` 都是 **标量**，上式可以写成：
+
+    .. math::
+
+        s^k -  H^ky^k = [\beta \gamma^2(s^k - H^ky^k)^Ty^k](s^k - H^ky^k)
+
+显然只有在 :math:`\beta \gamma^2(s^k - H^ky^k)^Ty^k = 1` 时，等式成立。
+
+因此，我们可以得到：
+
+    .. math::
+
+        \beta \gamma^2 = \frac{1}{(s^k - H^ky^k)^Ty^k}
+
+将上式 :math:`\beta \gamma^2` 回代到 **迭代更新表达式** :math:`H^{k+1} = H^k + \beta \mu \mu^T` ：
+
+    .. math::
+
+        \begin{aligned}
+        H^{k+1} &= H^k + \beta \mu \mu^T    \\
+                &= H^k + \beta \gamma^2(s^k - H^ky^k)(s^k - H^ky^k)^T    \\
+                &= H^k + \frac{\beta \gamma^2(s^k - H^ky^k)(s^k - H^ky^k)^T}{(s^k - H^ky^k)^Ty^k}
+        \end{aligned}
+
+记 :math:`v = s^k - H^ky^k` ，那么上述更新表达式可以化简为：
+
+    .. math::
+
+        H^{k+1} = H^{k} + \frac{vv^T}{v^Ty^k}
+        
+由此得到了最终 SR1 **方法** 的 **更新公式**。
+
+
+SR1 的缺点
+-----------------
+
+* 在迭代过程中 无法保证$B^k$正定，也就是说 **搜索方向不一定下降**。而且即使 :math:`B^k` **正定**，也 **不一定保证** :math:`B^{k+1}`
+* **无法保证** :math:`v^{T}y^k` **恒大于 0**，因此也可能会导致后续的 :math:`B^{k+1}` **非正定**
+
+BFGS 方法
+=================
+
+BFGS 定义
+-----------------
+
+BFGS方法考虑的是 对 :math:`B^k` 进行秩二更新。对于拟牛顿矩阵 :math:`B^k \in \mathbb {R}^{n \times n}` ，
+设 :math:`\mu \neq 0, \nu \neq 0, \mu, \nu \in \mathbb {R}^n` 以及 :math:`a ,b \in \mathbb {R}` ，其中设定的向量和标量都是待定的，
+则有 **秩二更新表达式**：
+
+    .. math::
+
+        B^{k+1} = B^{k} + a\mu \mu^T + b\nu \nu^T
+        
+显然 :math:`a\mu \mu^T` 和 :math:`b\nu \nu^T` 都是对称的。
+
+BFGS 更新公式
+-----------------
+
+根据 **割线方程** :math:`B^{k+1}s^k = y^k` ，代入 **待定参量**，得：
+    
+    .. math::
+
+        B^{k+1} = (B^{k} + a\mu \mu^T + b\nu \nu^T)s^k = y^k
+        
+整理可得：
+
+    .. math::
+
+        a\mu \mu^Ts^k + b\nu \nu^Ts^k = (a\mu^Ts^k)\mu + (b \nu^Ts^k)\nu  = y^k - B^ks^k
+        
+可以得出 :math:`a\mu^Ts^k` 和 :math:`b \nu^Ts^k` 为 **标量**，不妨取 :math:`(a\mu^Ts^k)\mu = y^k,(b \nu^Ts^k)\nu = -B^ks^k` ，所以可以得到如下取值
+
+    .. math::
+
+        a\mu^Ts^k = a, \mu = y^k, b \nu^Ts^k = -1, \nu = B^ks^k
+        
+化简可得所有 **待定参量的取值**：
+
+    .. math::
+
+        a = \frac{1}{\mu^Ts^k} = \frac{1}{(y^k)^Ts^k}   \\
+
+        b = -\frac{1}{\nu^Ts^k} = -\frac{1}{(B^ks^k)^Ts^k} = \frac{1}{(s^k)^TB^ks^k}
+    
+
+将上述取值回代到 **更新表达式** :math:`B^{k+1} = B^{k} + a\mu \mu^T + b\nu \nu^T` ，得:
+
+    .. math::
+
+        B^{k+1} = B^{k} +  \frac{y^k(y^k)^T}{(y^k)^Ts^k} - \frac{B^ks^k(s^k)^TB^k}{(s^k)^TB^ks^k}
+
+参考
+=================
+
+* https://www.cnblogs.com/MAKISE004/p/17904431.html
+* https://zhuanlan.zhihu.com/p/144736223
+* https://www.cnblogs.com/MAKISE004/p/17904431.html

@@ -68,7 +68,12 @@ Python依赖安装
    Chapter 14 - TEB控制算法 <_source/Chapter-14/ROS2-Parameters.md>
    Chapter 15 - MPC控制算法 <_source/Chapter-15/ROS2-Parameters.md>
    Chapter 16 - LQR控制算法 <_source/Chapter-16/ROS2-Parameters.md>
-   Chapter XX - 最优化方法 <_source/Chapter-XX/optimization_method>
+   Chapter 17 - 最优化方法 <_source/Chapter-17/optimization_method>
+   Chapter 18 - C++ Eigen库 <_source/Chapter-18/optimization_method>
+   Chapter 19 - RVIZ使用 <_source/Chapter-19/optimization_method>
+   Chapter 20 - ROS2 Navigation2 <_source/Chapter-20/optimization_method>
+   Chapter 21 - 激光SLAM <_source/Chapter-21/optimization_method>
+   Chapter 22 - 论文推荐<_source/Chapter-22/optimization_method>
 
 
    

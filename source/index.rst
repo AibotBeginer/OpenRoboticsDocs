@@ -57,7 +57,17 @@ Python依赖安装
    Chapter 03 - ROS2之话题Topic <_source/Chapter-03/ROS2-Parameters.md>
    Chapter 04 - ROS2之服务Sevice <_source/Chapter-04/ROS2-Parameters.md>
    Chapter 05 - ROS2之动作Action <_source/Chapter-05/ROS2-Parameters.md>
-   Chapter 06 - ROS2之坐标系变换TF2 <_source/Chapter-06/ROS2-Parameters.md>
+   Chapter 06 - ROS2之Lifecycle <_source/Chapter-06/ROS2-Parameters.md>
+   Chapter 07 - ROS2之坐标系变换TF2 <_source/Chapter-07/ROS2-Parameters.md>
+   Chapter 08 - Dijkstra算法 <_source/Chapter-08/ROS2-Parameters.md>
+   Chapter 09 - A*算法 <_source/Chapter-08/ROS2-Parameters.md>
+   Chapter 10 - Theta*算法 <_source/Chapter-10/ROS2-Parameters.md>
+   Chapter 11 - RRT*算法 <_source/Chapter-11/ROS2-Parameters.md>
+   Chapter 12 - 纯跟踪控制算法 <_source/Chapter-12/ROS2-Parameters.md>
+   Chapter 13 - DWA控制算法 <_source/Chapter-13/ROS2-Parameters.md>
+   Chapter 14 - TEB控制算法 <_source/Chapter-14/ROS2-Parameters.md>
+   Chapter 15 - MPC控制算法 <_source/Chapter-15/ROS2-Parameters.md>
+   Chapter 16 - LQR控制算法 <_source/Chapter-16/ROS2-Parameters.md>
    Chapter XX - 最优化方法 <_source/Chapter-XX/optimization_method>
 
 

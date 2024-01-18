@@ -7,6 +7,10 @@ OpenRobotic开源机器人文档, 由 **AibotBeginer** 团队创建。2024
 
 [在线OpenRobotic开源机人文档网站](https://openroboticsdocs.readthedocs.io/en/latest/index.html#)
 
+<a href ="https://openroboticsdocs.readthedocs.io/en/latest/index.html"><img src="./images/documents.png"></a>
+
+
+
 
 ## 工程下载
 
@@ -42,3 +46,6 @@ OpenRobotic开源机器人文档, 由 **AibotBeginer** 团队创建。2024
    使用浏览器打开文件: html/index.html
 ```
 
+## QQ社区交流
+
+![](./images/AibotBeginner-Navigtion-Talk.png)

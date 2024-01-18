@@ -55,22 +55,22 @@ Contents
 .. toctree::
    :maxdepth: 1
 
-   Chapter 01 - 工程介绍 <_source/Chapter-01/project_introduction.md>
-   Chapter 02 - ROS2之系统System <_source/Chapter-02/ROS2-Parameters.md>
-   Chapter 03 - ROS2之话题Topic <_source/Chapter-03/ROS2-Parameters.md>
-   Chapter 04 - ROS2之服务Sevice <_source/Chapter-04/ROS2-Parameters.md>
-   Chapter 05 - ROS2之动作Action <_source/Chapter-05/ROS2-Parameters.md>
-   Chapter 06 - ROS2之Lifecycle <_source/Chapter-06/ROS2-Parameters.md>
-   Chapter 07 - ROS2之坐标系变换TF2 <_source/Chapter-07/ROS2-Parameters.md>
-   Chapter 08 - Dijkstra算法 <_source/Chapter-08/ROS2-Parameters.md>
-   Chapter 09 - A*算法 <_source/Chapter-08/ROS2-Parameters.md>
-   Chapter 10 - Theta*算法 <_source/Chapter-10/ROS2-Parameters.md>
-   Chapter 11 - RRT*算法 <_source/Chapter-11/ROS2-Parameters.md>
-   Chapter 12 - 纯跟踪控制算法 <_source/Chapter-12/ROS2-Parameters.md>
-   Chapter 13 - DWA控制算法 <_source/Chapter-13/ROS2-Parameters.md>
-   Chapter 14 - TEB控制算法 <_source/Chapter-14/ROS2-Parameters.md>
-   Chapter 15 - MPC控制算法 <_source/Chapter-15/ROS2-Parameters.md>
-   Chapter 16 - LQR控制算法 <_source/Chapter-16/ROS2-Parameters.md>
+   Chapter 01 - 工程介绍 <_source/Chapter-01/project_introduction>
+   Chapter 02 - ROS2之系统System <_source/Chapter-02/ros2_system>
+   Chapter 03 - ROS2之话题Topic <_source/Chapter-03/ros2_topic>
+   Chapter 04 - ROS2之服务Sevice <_source/Chapter-04/ros2_service>
+   Chapter 05 - ROS2之动作Action <_source/Chapter-05/ros_action>
+   Chapter 06 - ROS2之Lifecycle <_source/Chapter-06/ros_lifecycle>
+   Chapter 07 - ROS2之坐标系变换TF2 <_source/Chapter-07/ros2_tf2>
+   Chapter 08 - Dijkstra算法 <_source/Chapter-08/dijkstra>
+   Chapter 09 - A*算法 <_source/Chapter-09/a_star>
+   Chapter 10 - Theta*算法 <_source/Chapter-10/theta_star>
+   Chapter 11 - RRT*算法 <_source/Chapter-11/rrt_star>
+   Chapter 12 - 纯跟踪控制算法 <_source/Chapter-12/pure_pursuit>
+   Chapter 13 - DWA控制算法 <_source/Chapter-13/dwa>
+   Chapter 14 - TEB控制算法 <_source/Chapter-14/teb>
+   Chapter 15 - MPC控制算法 <_source/Chapter-15/mpc>
+   Chapter 16 - LQR控制算法 <_source/Chapter-16/lqr>
    Chapter 17 - 最优化方法 <_source/Chapter-17/optimization_method>
    Chapter 18 - 非线性最小二乘 <_source/Chapter-18/nonlinear_least_squares>
    Chapter 19 - C++ Eigen库 <_source/Chapter-19/optimization_method>

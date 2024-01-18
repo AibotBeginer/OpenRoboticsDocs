@@ -20,7 +20,7 @@ author = 'duyongquan'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = []
-source_suffix = ['.rst', '.md']
+source_suffix = ['.rst']
 # The master toctree document.
 master_doc = 'index'
 # Add any paths that contain templates here, relative to this directory.
@@ -31,14 +31,6 @@ templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README.md', 'exercise']
 extensions = ['sphinx.ext.githubpages']
 
-if sphinx_version_info >= (1, 4):
-  extensions += ['recommonmark']
-else:
-  from recommonmark.parser import CommonMarkParser
-
-  source_parsers = {
-      '.md': CommonMarkParser,
-  }
 # -- Options for HTML output -------------------------------------------------
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.

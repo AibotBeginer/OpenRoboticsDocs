@@ -1,9 +1,11 @@
 # OpenRoboticsDocs
 
-OpenRobotic开源机器人文档索引页面, 由 **AibotBeginer** 团队创建。2024
+OpenRobotic开源机器人文档, 由 **AibotBeginer** 团队创建。2024
 
 唯天下之至诚能胜天下之至伪, 
 唯天下之至拙能胜天下之至巧
+
+[在线OpenRobotic开源机人文档网站](https://openroboticsdocs.readthedocs.io/en/latest/index.html#)
 
 
 ## 工程下载

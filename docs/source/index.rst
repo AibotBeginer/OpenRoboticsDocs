@@ -1,4 +1,4 @@
-Welcome to OpenRobotic Documents
+Welcome to OpenRobotic's documentation
 =========================================
 
 OpenRobotic开源机器人文档索引页面, 由 **AibotBeginer** 团队创建。2024
@@ -49,6 +49,9 @@ Python依赖安装
    cd OpenRoboticsDocs/build
    使用浏览器打开文件: html/index.html
 
+Contents
+----------------
+
 .. toctree::
    :maxdepth: 1
 
@@ -74,7 +77,3 @@ Python依赖安装
    Chapter 20 - ROS2 Navigation2 <_source/Chapter-20/optimization_method>
    Chapter 21 - 激光SLAM <_source/Chapter-21/optimization_method>
    Chapter 22 - 论文推荐<_source/Chapter-22/optimization_method>
-
-
-   
-

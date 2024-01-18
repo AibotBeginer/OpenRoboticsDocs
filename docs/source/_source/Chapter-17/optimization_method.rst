@@ -97,7 +97,7 @@
 
 
 拟牛顿法 :math:`H^k` 的确定
---------------------
+--------------------------------
 
 设 :math:`f(x)` 是二阶连续可微函数，对 :math:`\nabla f(x)` 在点 :math:`x^{k+1}` 处进行一阶泰勒近似，得：
 
@@ -372,16 +372,13 @@ Himmelblau's函数
 
 
 梯度下降法函数测试
-=================
+======================
 
 Python代码
 
 .. code::
 
-
-C++代码
-
-.. code::
+    
 
 
 牛顿法函数测试
@@ -487,49 +484,6 @@ Python代码
     plt.show()
 
 
-C++代码
-
-.. code::
-
-    #include "ceres/ceres.h"
-    #include "glog/logging.h"
-
-    // f(x,y) = (1-x)^2 + 100(y - x^2)^2;
-    struct Rosenbrock {
-        template <typename T>
-        bool operator()(const T* parameters, T* cost) const {
-            const T x = parameters[0];
-            const T y = parameters[1];
-            cost[0] = (1.0 - x) * (1.0 - x) + 100.0 * (y - x * x) * (y - x * x);
-            return true;
-        }
-
-        static ceres::FirstOrderFunction* Create() {
-            constexpr int kNumParameters = 2;
-            return new ceres::AutoDiffFirstOrderFunction<Rosenbrock, kNumParameters>(
-                new Rosenbrock);
-        }
-    };
-
-    int main(int argc, char** argv) 
-        {
-        google::InitGoogleLogging(argv[0]);
-
-        double parameters[2] = {-1.2, 1.0};
-
-        ceres::GradientProblemSolver::Options options;
-        options.minimizer_progress_to_stdout = true;
-
-        ceres::GradientProblemSolver::Summary summary;
-        ceres::GradientProblem problem(Rosenbrock::Create());
-        ceres::Solve(options, problem, parameters, &summary);
-
-        std::cout << summary.FullReport() << "\n";
-        std::cout << "Initial x: " << -1.2 << " y: " << 1.0 << "\n";
-        std::cout << "Final   x: " << parameters[0] << " y: " << parameters[1]
-                    << "\n";
-        return 0;
-    }
 
 拟牛顿法函数测试
 =================
@@ -538,10 +492,6 @@ Python代码
 
 .. code::
 
-
-C++代码
-
-.. code::
 
 参考
 =================
